@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    
+    .bingo-card {
+      width: 800px;
+      margin: 20px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .header {
+      text-align: center;
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: 15px;
+      background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 10px;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      background-color: #2C3E50;
+      padding: 8px;
+      border-radius: 10px;
+    }
+    
+    .cell {
+      background-color: white;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      min-height: 100px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cell:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .cell.completed {
+      background: linear-gradient(135deg, #4ECDC4, #556270);
+      color: white;
+    }
+    
+    .cell.completed::after {
+      content: '✓';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      color: white;
+    }
+    
+    .free-space {
+      background: linear-gradient(135deg, #FFE259, #FFA751);
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    
+    @media print {
+      .bingo-card {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+      
+      .cell {
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+      }
+      
+      .cell.completed {
+        background: #e0e0e0 !important;
+        color: black !important;
+      }
+      
+      .cell.completed::after {
+        color: black !important;
+      }
+      
+      .header {
+        color: black !important;
+        -webkit-text-fill-color: initial;
+      }
+      
+      .free-space {
+        background: #f0f0f0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bingo-card">
+    <div class="header">B I N G O</div>
+    <div class="subtitle">Life Goals & Adventures</div>
+    <div class="grid">
+      <div class="cell">Learn Chinese & Malayalam</div>
+      <div class="cell">Join Run Club</div>
+      <div class="cell">Try Muay Thai</div>
+      <div class="cell">Go Sailing</div>
+      <div class="cell">Cook More</div>
+      
+      <div class="cell">Visit Antarctica</div>
+      <div class="cell">Learn Sign Language</div>
+      <div class="cell">Practice Bass Guitar</div>
+      <div class="cell">Start DJ-ing</div>
+      <div class="cell">Join Chess Club</div>
+      
+      <div class="cell">Go Roller Skating</div>
+      <div class="cell">Try Busking</div>
+      <div class="cell free-space">FREE SPACE</div>
+      <div class="cell">Build a Darkroom</div>
+      <div class="cell">Try Screenprinting</div>
+      
+      <div class="cell">Get CPR Certified</div>
+      <div class="cell">Try Toastmasters</div>
+      <div class="cell">Complete Art Projects</div>
+      <div class="cell">Take Singing Classes</div>
+      <div class="cell">Learn Calisthenics</div>
+      
+      <div class="cell">Find Cofounders</div>
+      <div class="cell">Try Rejection Therapy</div>
+      <div class="cell">Side Hustle</div>
+      <div class="cell">Pacific Sailing Trip</div>
+      <div class="cell">Try Streaming</div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.cell').forEach(cell => {
+      cell.addEventListener('click', () => {
+        if (!cell.classList.contains('free-space')) {
+          cell.classList.toggle('completed');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
